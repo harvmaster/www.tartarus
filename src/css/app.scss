@@ -1,1 +1,139 @@
 // app global css in SCSS form
+$layout: #161B33;
+$layout-light: #474973;
+// $layout-dark: #0D0C1D;
+$alert-ball-color: white;
+
+.light-theme {
+  $layout: #ebebeb !global;
+  color: black;
+}
+
+.light-theme .bg-layout-1 {
+  background-color: $layout;
+  filter: brightness(1);
+}
+.light-theme .bg-layout-2 {
+  background-color: $layout;
+  filter: brightness(1.01);
+}
+.light-theme .bg-layout-3 {
+  background-color: $layout;
+  filter: brightness(1.02);
+}
+.light-theme .bg-layout-4 {
+  background-color: $layout;
+  filter: brightness(1.03);
+}
+.light-theme .bg-layout-5 {
+  background-color: $layout;
+  filter: brightness(1.04);
+}
+.light-theme .bg-layout-6 {
+  background-color: $layout;
+  filter: brightness(1.05);
+}
+.light-theme .bg-layout-7 {
+  background-color: $layout;
+  filter: brightness(1.3);
+}
+.light-theme .bg-layout-8 {
+  background-color: $layout;
+  filter: brightness(1.35);
+}
+
+.dark-theme {
+  $layout: rgb(39, 41, 41) !global;
+  $alert-ball-color: white !global;
+  color: rgb(209, 209, 209);
+}
+.dark-theme .bg-layout-1 {
+  background-color: $layout-1;
+}
+
+.dark-theme .bg-layout-2 {
+  background-color: $layout-2;
+}
+
+.dark-theme .bg-layout-3 {
+  background-color: $layout-secondary;
+}
+
+.dark-theme .bg-layout-4 {
+  background-color: $layout-4;
+}
+
+.dark-theme .bg-layout-5 {
+  background-color: $layout-primary;
+}
+
+.dark-theme .bg-layout-6 {
+  background-color: $layout-6;
+}
+
+.dark-theme .bg-layout-7 {
+  background-color: $layout-7;
+}
+
+.dark-theme .bg-layout-8 {
+  background-color: $layout-8;
+}
+
+.dark-theme .bg-layout-9 {
+  background-color: $layout-9;
+}
+
+.dark-theme .bg-layout-10 {
+  background-color: $layout-10;
+}
+
+
+// .bg-layout {
+//   background-color: $layout
+// }
+// .bg-layout-dark {
+//   background-color: $layout-dark;
+// }
+// .bg-layout-light {
+//   background-color: $layout-light;
+// }
+
+// .bg-layout-1 {
+//   background-color: $layout-1;
+// }
+
+// .bg-layout-2 {
+//   background-color: $layout-2;
+// }
+
+// .bg-layout-3 {
+//   background-color: $layout-3;
+// }
+
+// .bg-layout-4 {
+//   background-color: $layout-4;
+// }
+
+// .bg-layout-5 {
+//   background-color: $layout-5;
+// }
+
+// .bg-layout-6 {
+//   background-color: $layout-6;
+// }
+
+// .bg-layout-7 {
+//   background-color: $layout-7;
+// }
+
+// .bg-layout-8 {
+//   background-color: $layout-8;
+// }
+
+// .bg-layout-9 {
+//   background-color: $layout-9;
+// }
+
+// .bg-layout-10 {
+//   background-color: $layout-10;
+// }

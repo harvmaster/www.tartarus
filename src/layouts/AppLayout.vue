@@ -1,6 +1,6 @@
 <template>
-  <q-layout view="hHh Lpr lFf">
-    <q-header class="bg-blue-grey-10">
+  <q-layout view="hHh Lpr lFf" :class="themeClass" class="app-colour" >
+    <q-header class="bg-layout-1">
       <q-toolbar class="mobile-only">
         <q-btn
           flat
@@ -15,13 +15,16 @@
         <q-toolbar-title>
           Tartarus
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
 
-      <q-bar class="desktop-only bg-blue-grey-10">
+      <q-bar class="desktop-only bg-layout-1">
         <q-icon name="laptop_chromebook" />
         <div>Tartarus</div>
+        <q-toggle
+          :model-value="appStore.isDarkTheme"
+          @update:model-value="toggleDarkTheme"
+        />
+        <q-btn label="load Rooms" @click="loadRooms" />
 
         <q-space />
 
@@ -34,7 +37,7 @@
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
-      class="bg-blue-grey-10 row"
+      class="bg-layout-1 row"
     >
       <div class="transparent full-height col-auto overflow-auto hide-scrollbar" style="width: 75px" >
         <div class="full-width row q-py-sm">
@@ -44,15 +47,18 @@
               <div class="text-h6 text-center rounded-borders" style="aspect-ratio: 1;" />
             </div>
           </div>
-          <div class="col-12 q-py-xs">
-            <q-separator />
+          <div class="col-12 q-py-xs q-px-sm">
+            <q-separator size="2px" />
           </div>
   
           <!-- Group chats -->
-          <group-icon-bubble class="col-12 q-py-xs non-selectable" v-for="i in 20" :key="i" />
+          <group-icon-bubble class="col-12 q-py-xs non-selectable" v-for="(server, index) of servers" :key="server.name" :name="server.name" :unread="server.unread" :imgURL="server.imgURL" :isSelected="selectedIndex.value == index" @selected="selectedIndex = index"/>
 
           <!-- New chat Button -->
-          <div class="col-12 q-py-xs non-selectable">
+          <div class="col-12 q-py-xs q-px-sm">
+            <q-separator size="2px" />
+          </div>
+          <div class="col-12 q-py-xs q-px-sm non-selectable">
             <div class="full-width round bordered cursor-pointer bg-secondary row" style="aspect-ratio: 1">
               <q-icon class="col self-center" size="2em" name="add" />
             </div>
@@ -60,13 +66,13 @@
         </div>
       </div>
       <!-- :width="75" -->
-      <div class="col bg-blue-grey-9 rounded-top-left overflow-auto hide-scrollbar ">
-        test
+      <div class="col bg-layout-3 rounded-top-left overflow-auto hide-scrollbar row justify-end">
+        <channel-list class="col" :channels="selectedServer?.channels" />
       </div>
 
     </q-drawer>
 
-    <q-page-container class="bg-blue-grey-14">
+    <q-page-container class="bg-layout-5">
       <router-view class=""/>
     </q-page-container>
   </q-layout>
@@ -81,7 +87,7 @@
   transition: all 0.2s ease;
 }
 .round:hover {
-  border-radius: 25%;
+  border-radius: 33%;
 }
 .t-icon {
   padding: 20%;
@@ -108,8 +114,25 @@
 </style>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useAppStore } from 'stores/app'
 import GroupIconBubble from 'src/components/app/Layout/GroupIconBubble.vue';
+import ChannelList from 'components/app/Layout/ChannelList.vue'
+
+import { generateMockServers } from '../data'
+
+const appStore = useAppStore()
+const toggleDarkTheme = appStore.toggleDarkTheme
+const themeClass = computed(() => appStore.isDarkTheme ? 'dark-theme' : 'light-theme')
+
+
+const loadRooms = () => {
+  appStore.loadRooms()
+}
+const servers = ref(generateMockServers())
+
+const selectedIndex = ref(0)
+const selectedServer = computed(() => servers.value[selectedIndex.value])
 
 const leftDrawerOpen = ref(false)
 

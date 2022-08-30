@@ -19,11 +19,11 @@ class Room {
   }
 
   addChannel (channel: Channel) {
-
+    console.log()
   }
 
   removeChannel (name: string) {
-
+    console.log()
   }
 }
 

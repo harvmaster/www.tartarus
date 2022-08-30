@@ -66,7 +66,7 @@ class User {
     this.accountCode = user.accountCode
     this.username = user.username
     this.keypairs = await user.decryptKeys(await this.secret)
-    api.defaults.headers.common.authorization = user.jwt
+    api.defaults.headers.common.authorization = 'Token ' + user.jwt
   }
 
   async getNewestKeyPair () {
