@@ -24,22 +24,20 @@ $negative  : #C10015;
 $info      : #31CCEC;
 $warning   : #F2C037;
 
-$layout-primary: hsl(220, 7.7%, 22.9%);
-$layout-secondary: hsl(220, 6.9%, 19.8%);
+$layout-dark-4: hsla(220, 8%, 23%, 1);
+$layout-dark-3: hsla(220, 4%, 27%, 1);
+$layout-dark-2: hsla(220, 2%, 31%, 1);
+$layout-dark-1: hsla(0, 0%, 35%, 1);
 
-$layout-light: #474973;
-// $layout-dark: #0D0C1D;
+// $layout-light-1: hsla(312, 100%, 99%, 1);
+// $layout-light-2: hsla(312, 100%, 99%, 1);
+// $layout-light-3: hsla(300, 100%, 100%, 1);
+// $layout-light-4: hsla(0, 0%, 100%, 1);
 
-$layout-1: #1e2124;
-$layout-2: #1e2124;
-$layout-3: #282b30;
-$layout-4: #303439;
-$layout-5: #36393e;
-$layout-6: #42484f;
-$layout-7: #424549;
-$layout-8: #545c64;
-$layout-9: #5d666f;
-$layout-10: #66707a;
+$layout-light-4: hsla(300, 5%, 96%, 1);
+$layout-light-3: hsla(0, 0%, 97%, 1);
+$layout-light-2: hsla(300, 14%, 99%, 1);
+$layout-light-1: hsla(0, 0%, 100%, 1);
 
 $alert-ball-color: white;
 

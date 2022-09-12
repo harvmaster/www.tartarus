@@ -1,27 +1,28 @@
 interface ChannelInput {
-  channels: {[key: string]: Channel},
   created: Date,
-  name: string
+  name: string,
+  type: string
 }
 
 class Channel {
 
   // channels: {[key: string]: Channel}
+  type: string
   created: Date
   name: string
 
-  constructor ({ channels, created, name }: ChannelInput) {
-    // this.channels = channels
+  constructor ({ created, name, type }: ChannelInput) {
     this.created = created
     this.name = name
+    this.type = type
   }
 
   addChannel (channel: Channel) {
-
+    console.log('')
   }
 
   removeChannel (name: string) {
-
+    console.log('')
   }
 }
 

@@ -1,4 +1,6 @@
 import { defineStore } from 'pinia';
+import { LocalStorage } from 'quasar';
+import { api } from 'src/boot/axios';
 import User from 'src/utils/auth/User'
 
 export const useUserStore = defineStore('user', {
@@ -14,6 +16,12 @@ export const useUserStore = defineStore('user', {
 
   actions: {
     setUser (user: User) {
+      this.user = user
+    },
+    loadUserFromStorage () {
+      console.log('Loading User From Storage')
+      const user = LocalStorage.getItem('user') || {}
+      api.defaults.headers.common.authorization = 'Token ' + user.jwt
       this.user = user
     },
     logout () {

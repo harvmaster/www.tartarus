@@ -1,5 +1,6 @@
 import { base58ToBin } from '@bitauth/libauth'
 import { api } from 'boot/axios'
+import { LocalStorage } from 'quasar'
 import { KeyPair, EncryptedKeyPair } from '../crypto/keypair'
 import sha256 from '../crypto/sha256'
 import AuthRequest from './AuthRequest'
@@ -66,7 +67,15 @@ class User {
     this.accountCode = user.accountCode
     this.username = user.username
     this.keypairs = await user.decryptKeys(await this.secret)
+
     api.defaults.headers.common.authorization = 'Token ' + user.jwt
+    LocalStorage.set('user', {
+      id: this.id,
+      accountCode: this.accountCode,
+      username: this.username,
+      keypairs: this.keypairs,
+      jwt: user.jwt
+    })
   }
 
   async getNewestKeyPair () {

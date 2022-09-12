@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-borders channel-tag q-py-xs q-px-md cursor-pointer full-width row bg-layout-3" :class="channelClass" @mouseenter="hovered = true" @mouseleave="hovered = false">
+  <div class="rounded-borders channel-tag q-py-xs q-px-md cursor-pointer full-width row" :class="channelClass" @mouseenter="hovered = true" @mouseleave="hovered = false">
     <div class="col-auto q-pr-sm">#</div>
     <div class="col ellipsis">{{ channel.name }}</div>
   </div>
@@ -29,7 +29,8 @@ const emit = defineEmits(['selected'])
 
 const hovered = ref(false)
 const channelClass = computed(() => {
-  return hovered.value ? 'bg-layout-5' : 'bg-layout-3'
+  const isHovered = hovered.value
+  return isHovered ? 'bg-layout-1' : 'bg-layout-2'
 })
 
 
