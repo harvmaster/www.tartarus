@@ -25,6 +25,7 @@
           @update:model-value="toggleDarkTheme"
         />
         <q-btn label="load Rooms" @click="loadRooms" />
+        <q-btn label="test ServiceWorker" @click="testServiceWorker" />
 
         <q-space />
 
@@ -137,6 +138,8 @@ import CreateServerDialog from 'components/app/rooms/CreateRoomDialog.vue'
 import CreateChannelDialog from 'components/app/channels/CreateChannelDialog.vue'
 
 import { generateMockServers } from '../data'
+// import Database from '../db/Database'
+import api from '../api'
 
 const appStore = useAppStore()
 const toggleDarkTheme = appStore.toggleDarkTheme
@@ -163,4 +166,21 @@ const toggleCreateServer = () => createServerDialog.value.toggleVisible()
 
 const createChannelDialog = ref()
 const toggleChannelDialog = () => createChannelDialog.value.toggleVisible()
+
+// const userDB = new Database('users')
+const testServiceWorker = async () => {
+  const { cache, api: server } = api.Servers.getAllServers().promises()
+  cache.then(data => console.log('cachePromise', data))
+  server.then(data => console.log('serverPromise', data))
+
+  const observable = api.Servers.getAllServers().observable()
+  observable.subscribe((data) => {
+    console.log('Observable', data)
+  })
+
+  // console.log('t')
+  // console.log(await userDB.find({ username: 'Test User2' }))
+  // console.log(navigator.serviceWorker.controller)
+  // navigator.serviceWorker?.controller?.postMessage({type: 'db', command: 'find', params: { storeName: 'users' }})
+}
 </script>
